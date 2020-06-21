@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2020-06-21T13:24:11Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Proxmox Mail Gateway</template>
+            <name>Template Proxmox Mail Gateway</name>
+            <description>Template for PMG Proxmox Mail Gateway</description>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>ProxmoxMG Senders</name>
+                </application>
+            </applications>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>PMG senders discovery</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>pmg.senders.discovery</key>
+                    <description>Discovery senders in Proxmox Mail Gateway</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#SENDER}</name>
+                            <type>ZABBIX_ACTIVE</type>
+                            <key>pmg.senders.[{#SENDER}]</key>
+                            <delay>30s</delay>
+                            <applications>
+                                <application>
+                                    <name>ProxmoxMG Senders</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+</zabbix_export>
